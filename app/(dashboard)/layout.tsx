@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { MapPin, LayoutDashboard, BookMarked, UserCircle, LogOut } from 'lucide-react'
+import { MapPin, LayoutDashboard, BookMarked, UserCircle, Clock, Briefcase, LogOut } from 'lucide-react'
 
 async function SignOutButton() {
   return (
@@ -31,7 +31,9 @@ async function SignOutButton() {
 const navItems = [
   { href: '/dashboard', label: 'Ana Sayfa', icon: LayoutDashboard },
   { href: '/dashboard/plans', label: 'Planlarım', icon: BookMarked },
-  { href: '/dashboard/profile', label: 'Profil', icon: UserCircle },
+  { href: '/dashboard/profile', label: 'Profilim', icon: UserCircle },
+  { href: '/dashboard/history', label: 'Gezi Geçmişi', icon: Clock },
+  { href: '/dashboard/business', label: 'İşletme', icon: Briefcase },
 ]
 
 export default async function DashboardLayout({
