@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import PlanMap from '@/components/plan/PlanMap'
 import StopCard from '@/components/plan/StopCard'
 import PlanSummaryBar from '@/components/plan/PlanSummaryBar'
+import ChatPanel from '@/components/plan/ChatPanel'
 import type { TripPlan, TripPlanData } from '@/types/database'
 
 interface PlanPageClientProps {
@@ -12,18 +13,25 @@ interface PlanPageClientProps {
   planData: TripPlanData
 }
 
-export default function PlanPageClient({ plan, planData }: PlanPageClientProps) {
+export default function PlanPageClient({ plan, planData: initialPlanData }: PlanPageClientProps) {
   const router = useRouter()
   const [activeStopIndex, setActiveStopIndex] = useState<number | undefined>(undefined)
+  const [currentPlan, setCurrentPlan] = useState<TripPlanData>(initialPlanData)
+  const [chatOpen, setChatOpen] = useState(false)
 
-  const stops = planData.stops ?? []
+  const stops = currentPlan.stops ?? []
 
   function handleStartNavigation() {
     router.push(`/plan/${plan.id}/navigate`)
   }
 
   function handleEditPlan() {
-    alert('AI ile Düzenle — FAZ 6\'da gelecek')
+    setChatOpen(true)
+  }
+
+  function handlePlanUpdated(newPlan: TripPlanData) {
+    setCurrentPlan(newPlan)
+    setActiveStopIndex(undefined)
   }
 
   return (
@@ -79,7 +87,7 @@ export default function PlanPageClient({ plan, planData }: PlanPageClientProps) 
               margin: 0,
             }}
           >
-            {plan.title || planData.title}
+            {plan.title || currentPlan.title}
           </h1>
           <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>
             {plan.city}
@@ -132,7 +140,7 @@ export default function PlanPageClient({ plan, planData }: PlanPageClientProps) 
           className="map-mobile"
         >
           <PlanMap
-            plan={planData}
+            plan={currentPlan}
             activeStopIndex={activeStopIndex}
             showRoute
             className="w-full h-full"
@@ -180,9 +188,17 @@ export default function PlanPageClient({ plan, planData }: PlanPageClientProps) 
       </div>
 
       <PlanSummaryBar
-        plan={planData}
+        plan={currentPlan}
         onStartNavigation={handleStartNavigation}
         onEditPlan={handleEditPlan}
+      />
+
+      <ChatPanel
+        planId={plan.id}
+        currentPlan={currentPlan}
+        onPlanUpdated={handlePlanUpdated}
+        isOpen={chatOpen}
+        onClose={() => setChatOpen(false)}
       />
 
       <style>{`
