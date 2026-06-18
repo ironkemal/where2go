@@ -1,0 +1,110 @@
+import type { TripPlanData } from '@/types/database'
+
+export const mockRomePlan: TripPlanData = {
+  title: 'Roma Klasikleri Turu',
+  city: 'Roma',
+  total_duration_minutes: 180,
+  total_cost_estimate: { min: 25, max: 55, currency: 'EUR' },
+  stops: [
+    {
+      order: 1,
+      name: 'Hotel Colosseum',
+      type: 'accommodation',
+      address: 'Via Capo d\'Africa 15, 00184 Roma RM, Italy',
+      coordinates: { lat: 41.8891, lng: 12.493 },
+      duration_minutes: 0,
+      cost_estimate: { min: 0, max: 0 },
+      description: 'Başlangıç noktanız — Kolezyum\'un hemen yakınında konumlanan konaklama yeriniz.',
+      tips: ['Güneş kremi ve su almayı unutmayın', 'Rahat yürüyüş ayakkabısı giyin'],
+      transport_to_next: {
+        mode: 'walking',
+        duration_minutes: 5,
+        distance_meters: 400,
+        cost_estimate: 0,
+      },
+    },
+    {
+      order: 2,
+      name: 'Kolezyum (Colosseo)',
+      type: 'attraction',
+      address: 'Piazza del Colosseo 1, 00184 Roma RM, Italy',
+      coordinates: { lat: 41.8902, lng: 12.4922 },
+      duration_minutes: 60,
+      cost_estimate: { min: 12, max: 18 },
+      description:
+        'MÖ 70–80 yılları arasında inşa edilen, dünyanın en iyi korunmuş amfi tiyatrolarından biri. Gladyatör dövüşleri ve halka açık oyunların sahnelendiği bu anıtsal yapı, Roma İmparatorluğu\'nun simgesidir.',
+      tips: [
+        'Online bilet alarak kuyruktan kaçının',
+        'Sabah erken saatte daha az kalabalık olur',
+        'Forum Romanum ile kombine bilet daha avantajlıdır',
+      ],
+      transport_to_next: {
+        mode: 'walking',
+        duration_minutes: 25,
+        distance_meters: 2000,
+        cost_estimate: 0,
+      },
+    },
+    {
+      order: 3,
+      name: 'Trattoria da Enzo al 29',
+      type: 'restaurant',
+      address: 'Via dei Vascellari 29, 00153 Roma RM, Italy',
+      coordinates: { lat: 41.8876, lng: 12.4721 },
+      duration_minutes: 45,
+      cost_estimate: { min: 15, max: 30 },
+      description:
+        'Trastevere semtinde saklı, geleneksel Roma mutfağının en iyi temsilcilerinden biri. Cacio e pepe ve tonnarelli cacio e pepe gibi klasik makarna çeşitleriyle ünlüdür.',
+      tips: [
+        'Rezervasyon önerilir',
+        'Günün menüsünü deneyin',
+        'Nakit ödemeye hazır olun',
+      ],
+      transport_to_next: {
+        mode: 'walking',
+        duration_minutes: 20,
+        distance_meters: 1600,
+        cost_estimate: 0,
+      },
+    },
+    {
+      order: 4,
+      name: 'Trevi Çeşmesi (Fontana di Trevi)',
+      type: 'attraction',
+      address: 'Piazza di Trevi, 00187 Roma RM, Italy',
+      coordinates: { lat: 41.9009, lng: 12.4833 },
+      duration_minutes: 20,
+      cost_estimate: { min: 0, max: 0 },
+      description:
+        "Roma'nın en ünlü barok çeşmesi. 1762'de tamamlanan yapı, Nicola Salvi tarafından tasarlanmıştır. Efsaneye göre omzunuzun üzerinden bir bozuk para atarsanız Roma'ya geri dönersiniz.",
+      tips: [
+        'Sabah erken veya geç akşam daha az kalabalık olur',
+        'Çeşmeye para atmayı unutmayın',
+        'Çevredeki turistik tuzaklardan kaçının',
+      ],
+      transport_to_next: {
+        mode: 'walking',
+        duration_minutes: 5,
+        distance_meters: 400,
+        cost_estimate: 0,
+      },
+    },
+    {
+      order: 5,
+      name: 'Hotel Colosseum',
+      type: 'accommodation',
+      address: 'Via Capo d\'Africa 15, 00184 Roma RM, Italy',
+      coordinates: { lat: 41.8891, lng: 12.493 },
+      duration_minutes: 0,
+      cost_estimate: { min: 0, max: 0 },
+      description: 'Turunuzun sonu — konaklama yerinize dönüş.',
+      tips: [],
+      transport_to_next: {
+        mode: 'walking',
+        duration_minutes: 0,
+        distance_meters: 0,
+        cost_estimate: 0,
+      },
+    },
+  ],
+}

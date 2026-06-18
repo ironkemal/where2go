@@ -92,7 +92,7 @@ export default async function DashboardPage() {
 
       {hasActiveAccommodation ? (
         <Link
-          href="/dashboard/new-plan"
+          href="/plan/new"
           className="group flex items-center justify-between w-full rounded-2xl p-6 transition-all duration-300"
           style={{
             background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%)',
@@ -310,7 +310,7 @@ export default async function DashboardPage() {
           </p>
           {hasActiveAccommodation ? (
             <Link
-              href="/dashboard/new-plan"
+              href="/plan/new"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200"
               style={{
                 background: 'linear-gradient(135deg, #F59E0B, #D97706)',
